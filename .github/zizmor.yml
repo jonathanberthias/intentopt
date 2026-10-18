@@ -1,0 +1,7 @@
+# Configuration for zizmor (https://docs.zizmor.sh)
+rules:
+  unpinned-uses:
+    config:
+      # Dependabot maintains the action version tags used by these workflows.
+      policies:
+        "*": ref-pin

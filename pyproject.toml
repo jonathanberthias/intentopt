@@ -45,6 +45,8 @@ test = [
 ]
 dev = [
   { include-group = "test" },
+  "ty>=0.0.89",
+  "pyrefly>=1.4.0",
 ]
 
 
@@ -68,3 +70,56 @@ report.exclude_also = [
   'if typing.TYPE_CHECKING:',
 ]
 
+[tool.ty.src]
+include = ["src", "tests"]
+
+[tool.ty.environment]
+python-version = "3.11"
+
+[tool.ty.rules]
+all = "error"
+
+[tool.pyrefly]
+project-includes = ["src", "tests"]
+python-version = "3.11"
+preset = "all"
+
+[tool.pyrefly.errors]
+# CVXPY's operator decorators and value properties lack complete annotations.
+unknown-argument-type = false
+unknown-attribute-access = false
+unknown-variable-type = false
+
+[[tool.pyrefly.sub-config]]
+matches = "tests/**"
+
+[tool.pyrefly.sub-config.errors]
+# Validation tests call constructors and solve for their side effects.
+unused-call-result = false
+
+[tool.ruff]
+show-fixes = true
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "COM812",   # The formatter owns trailing commas.
+  "CPY001",   # The repository license covers all source files.
+  "D203",     # Use no blank line before class docstrings.
+  "D213",     # Start docstring summaries on the first line.
+  "D105",     # Standard special methods need no extra docstrings.
+  "D107",     # Constructor behavior is documented on the class.
+  "PLR09",    # Keep the small solver together rather than splitting for counts.
+  "PLR2004",  # Numeric bounds and examples are clearer inline.
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 20
+
+[tool.ruff.lint.per-file-ignores]
+"src/intentopt/**" = ["SLF001"]  # Private helpers are shared within the package.
+"src/intentopt/solve.py" = ["ANN401"]  # Solver-specific option values are open-ended.
+"**/integrality.py" = ["N812"]  # CVXPY's abs class is imported as Abs.
+"**/intention.py" = ["N812"]
+"tests/**" = ["D100", "D103", "FBT001", "INP001", "N812", "S101", "SLF001", "T201"]
+"examples/**" = ["INP001", "T201"]
