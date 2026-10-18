@@ -33,6 +33,7 @@ dependencies = ["cvxpy-base>=1.4.0", "numpy>=1.24", "typing-extensions>=4.5"]
 
 [project.urls]
 Homepage = "https://github.com/jonathanberthias/intentopt"
+Documentation = "https://jonathanberthias.github.io/intentopt/"
 "Bug Tracker" = "https://github.com/jonathanberthias/intentopt/issues"
 Discussions = "https://github.com/jonathanberthias/intentopt/discussions"
 
@@ -47,6 +48,12 @@ dev = [
   { include-group = "test" },
   "ty>=0.0.89",
   "pyrefly>=1.4.0",
+]
+docs = [
+    "zensical>=0.0.20",
+    "mkdocstrings-python",
+    # mkdocstrings 1.0 uses the pre-12 highlighting constructor.
+    "pymdown-extensions<12",
 ]
 
 
@@ -71,7 +78,7 @@ report.exclude_also = [
 ]
 
 [tool.ty.src]
-include = ["src", "tests"]
+include = ["src", "tests", "examples"]
 
 [tool.ty.environment]
 python-version = "3.11"
@@ -80,7 +87,7 @@ python-version = "3.11"
 all = "error"
 
 [tool.pyrefly]
-project-includes = ["src", "tests"]
+project-includes = ["src", "tests", "examples"]
 python-version = "3.11"
 preset = "all"
 
