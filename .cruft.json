@@ -1,0 +1,33 @@
+{
+  "template": "https://github.com/scientific-python/cookie",
+  "commit": "8151d285529483049cbef81dade87a30ed8366b3",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "intentopt",
+      "org": "jonathanberthias",
+      "url": "https://github.com/jonathanberthias/intentopt",
+      "full_name": "Jonathan Berthias",
+      "email": "jvberthias@gmail.com",
+      "project_short_description": "Optimization with mandatory requirements and prioritized preferences",
+      "license": "Apache",
+      "backend": "uv",
+      "docs": "zensical",
+      "vcs": false,
+      "__year": "2026",
+      "__project_slug": "intentopt",
+      "__type": "pure",
+      "__answers": "",
+      "__ci": "github",
+      "_template": "https://github.com/scientific-python/cookie",
+      "_commit": "8151d285529483049cbef81dade87a30ed8366b3"
+    }
+  },
+  "directory": null,
+  "skip": [
+    "noxfile.py",
+    ".readthedocs.yaml",
+    ".github/workflows/cd.yml",
+    ".github/release.yml"
+  ]
+}

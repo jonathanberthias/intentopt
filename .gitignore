@@ -1,0 +1,26 @@
+# Python and build artifacts
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+build/
+dist/
+
+# Environments and local configuration
+.venv/
+.env
+
+# Test, lint, and documentation output
+.*_cache/
+.cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+site/
+
+# Editor and operating system files
+*~
+*.swp
+.DS_Store
+Thumbs.db
