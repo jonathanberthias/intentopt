@@ -1,0 +1,70 @@
+[build-system]
+requires = ["uv_build>=0.7.19,<0.12"]
+build-backend = "uv_build"
+
+
+[project]
+name = "intentopt"
+version = "0.1.0"
+authors = [
+  { name = "Jonathan Berthias", email = "jvberthias@gmail.com" },
+]
+description = "Optimization with mandatory requirements and prioritized preferences"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering",
+  "Typing :: Typed",
+]
+dependencies = ["cvxpy-base>=1.4.0", "numpy>=1.24", "typing-extensions>=4.5"]
+
+[project.urls]
+Homepage = "https://github.com/jonathanberthias/intentopt"
+"Bug Tracker" = "https://github.com/jonathanberthias/intentopt/issues"
+Discussions = "https://github.com/jonathanberthias/intentopt/discussions"
+
+
+[dependency-groups]
+test = [
+  "pytest >=9",
+  "pytest-cov >=7",
+  "clarabel>=0.11.1",
+]
+dev = [
+  { include-group = "test" },
+]
+
+
+[tool.pytest]
+minversion = "9.0"
+addopts = ["-ra", "--showlocals"]
+strict = true
+filterwarnings = [
+  "error",
+]
+log_level = "INFO"
+testpaths = [
+  "tests",
+]
+
+
+[tool.coverage]
+run.source = ["intentopt"]
+report.exclude_also = [
+  '\.\.\.',
+  'if typing.TYPE_CHECKING:',
+]
+
